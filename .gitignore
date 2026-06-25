@@ -1,0 +1,5 @@
+.env
+*.log
+postgres_data/
+horror_facts_postgres_data/
+.DS_Store

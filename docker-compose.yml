@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: horror_db
+    environment:
+      POSTGRES_USER: horror
+      POSTGRES_PASSWORD: horror_secret
+      POSTGRES_DB: horror_facts
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -1,0 +1,34 @@
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+}
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.8) 100%);
+}
+.fade-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #353534 50%, transparent 100%);
+}
+.button-glitch:hover {
+    background-color: #131313 !important;
+    color: #ffb4a9 !important;
+    border: 1px solid #ffb4a9 !important;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}

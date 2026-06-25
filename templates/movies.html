@@ -1,0 +1,43 @@
+{{define "content"}}
+<main class="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-8 py-12 relative z-10">
+    <h1 class="text-5xl font-black text-primary mb-12 text-center" style="font-family: 'Playfair Display', serif;">The Archive</h1>
+    <div class="flex justify-center gap-4 mb-12">
+        <a href="/filter?category=русский" class="tag-chip no-underline">[RUSSIAN]</a>
+        <a href="/filter?category=зарубежный" class="tag-chip no-underline">[FOREIGN]</a>
+    </div>
+    {{if .RussianMovies}}
+    <h2 class="text-3xl font-bold text-secondary mb-6" style="font-family: 'Playfair Display', serif;">Russian Horror</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {{range .RussianMovies}}
+        <a href="/search?q={{.Key}}" class="glass-card rounded-lg overflow-hidden flex flex-col group no-underline">
+            <div class="h-48 bg-surface-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-6xl text-outline-variant">theaters</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-white transition-colors" style="font-family: 'Playfair Display', serif;">{{.Movie.Title}}</h3>
+                <p class="text-on-surface-variant text-sm mb-4 flex-grow">{{.Movie.About}}</p>
+                <span class="tag-chip inline-block w-fit">[{{.Movie.Year}}]</span>
+            </div>
+        </a>
+        {{end}}
+    </div>
+    {{end}}
+    {{if .ForeignMovies}}
+    <h2 class="text-3xl font-bold text-secondary mb-6" style="font-family: 'Playfair Display', serif;">Foreign Horror</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{range .ForeignMovies}}
+        <a href="/search?q={{.Key}}" class="glass-card rounded-lg overflow-hidden flex flex-col group no-underline">
+            <div class="h-48 bg-surface-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-6xl text-outline-variant">theaters</span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-bold text-primary mb-2 group-hover:text-white transition-colors" style="font-family: 'Playfair Display', serif;">{{.Movie.Title}}</h3>
+                <p class="text-on-surface-variant text-sm mb-4 flex-grow">{{.Movie.About}}</p>
+                <span class="tag-chip inline-block w-fit">[{{.Movie.Year}}]</span>
+            </div>
+        </a>
+        {{end}}
+    </div>
+    {{end}}
+</main>
+{{end}}

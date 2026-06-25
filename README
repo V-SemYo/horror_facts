@@ -1,0 +1,147 @@
+# Horror Facts — Every Scream Has a Source
+
+[![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat&logo=postgresql)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-✓-2496ED?style=flat&logo=docker)](https://www.docker.com/)
+
+A dark atmospheric web application that reveals the **true stories behind famous horror films**. Built with Go, PostgreSQL, and pure HTML/CSS templates.
+
+---
+
+## Features
+
+- **65+ horror movies** — Russian and foreign, each with real-life facts
+- **AI-powered search** — powered by DeepSeek via OpenRouter. If a movie is not in the database, AI generates the answer in the same format
+- **Interactive horror map** — real-world locations that inspired famous films
+- **User authentication** — registration, login, JWT tokens, cookie-based sessions
+- **Dark atmospheric UI** — custom glassmorphism design with noise texture and vignette
+- **Clean architecture** — Go templates, repository pattern, middleware
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | Go (net/http, html/template) |
+| Database | PostgreSQL 16 |
+| AI | DeepSeek (via OpenRouter API) |
+| Auth | JWT (golang-jwt) + bcrypt |
+| Frontend | Tailwind CSS, vanilla JS |
+| DevOps | Docker, Docker Compose |
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Go 1.21+
+- Docker & Docker Compose
+
+### Setup
+
+```bash
+git clone https://github.com/V-SemYo/horror-facts.git
+cd horror-facts
+cp .env.example .env
+# Edit .env — add your OpenRouter API key and JWT secret
+docker-compose up -d
+go run main.go
+Open http://localhost:8080 — enter the void.
+
+Environment Variables
+Variable	Description	Default
+DB_HOST	PostgreSQL host	127.0.0.1
+DB_PORT	PostgreSQL port	5433
+DB_USER	Database user	horror
+DB_PASSWORD	Database password	—
+DB_NAME	Database name	horror_facts
+SERVER_PORT	HTTP server port	8080
+JWT_SECRET	Secret key for JWT tokens	—
+OPENROUTER_API_KEY	API key for AI search	—
+
+
+Project Structure
+text
+horror_facts/
+├── main.go
+├── handlers/
+├── templates/
+├── static/
+├── internal/
+│   ├── config/
+│   ├── database/
+│   ├── repository/
+│   ├── middleware/
+│   ├── models/
+│   └── ai/
+├── migrations/
+└── data/
+
+
+API Endpoints
+Method	Path	Description	Auth
+GET	/	Home page	No
+GET	/search?q=	Search movie	No
+GET	/movies	All movies archive	No
+GET	/filter?category=	Filter by category	No
+GET	/map	Horror locations map	No
+GET	/login	Login page	No
+POST	/login	Login (returns JWT)	No
+GET	/register	Registration page	No
+POST	/register	Register new user	No
+GET	/logout	Logout (clears cookie)	No
+
+
+About the AI Search
+When a user searches for a movie not found in the database, the application sends a request to DeepSeek (via OpenRouter) with the full list of 65 movies as context. The AI returns a structured JSON response matching the database format, which is then rendered using the same template.
+
+text
+User query → Search in DB → Not found → DeepSeek API → Parse JSON → Render template
+Russian Horror Map
+The /map page features a custom world map with pulsing markers for real locations:
+
+Moscow — Kotelnicheskaya Embankment
+
+Oymyakon — Coldest place in Russia
+
+Chernobyl — Exclusion zone legends
+
+Lake Baikal — Sunken NKVD ships
+
+Amityville, NY — 112 Ocean Avenue
+
+Plainfield, WI — Ed Gein's farmhouse
+
+And many more...
+
+License
+MIT
+
+Horror Facts — У каждого крика есть источник
+Тёмное атмосферное веб-приложение, раскрывающее реальные истории за известными фильмами ужасов. Написано на Go, PostgreSQL и чистых HTML/CSS шаблонах.
+
+Возможности
+65+ фильмов ужасов — русские и зарубежные, с реальными фактами
+
+ИИ-поиск — на базе DeepSeek через OpenRouter. Если фильм не найден в базе, ИИ генерирует ответ в том же формате
+
+Интерактивная карта ужасов — реальные локации, вдохновившие фильмы
+
+Авторизация — регистрация, вход, JWT токены
+
+Тёмный дизайн — glassmorphism, шум, виньетка
+
+Быстрый старт
+bash
+git clone https://github.com/V-SemYo/horror-facts.git
+cd horror-facts
+cp .env.example .env
+docker-compose up -d
+go run main.go
+Откройте http://localhost:8080.
+
+ИИ-поиск
+text
+Запрос → Поиск в БД → Не найден → DeepSeek API → Парсинг JSON → Шаблон

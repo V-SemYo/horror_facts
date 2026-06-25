@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>{{.Title}} - Horror Facts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#c8c6c6", "background": "#121414", "on-surface": "#ffffff",
+                "surface-container": "#1e2020", "surface-container-lowest": "#0c0f0f",
+                "outline-variant": "#474747", "on-surface-variant": "#e2e2e2",
+                "primary-container": "#474747", "on-primary-container": "#ffffff",
+                "secondary": "#c8c6c5",
+            },
+            fontFamily: {
+                "display-lg": ["Playfair Display"], "headline-lg": ["Playfair Display"],
+                "headline-md": ["Playfair Display"], "body-md": ["Inter"],
+                "body-lg": ["Inter"], "label-md": ["JetBrains Mono"], "caption": ["Inter"],
+            }
+        }
+    }
+}
+</script>
+<style>
+body { background-color: #0a0a0a; color: #fff; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+body::before { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 50; opacity: 0.03; background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E'); }
+body::after { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 49; background: radial-gradient(circle at center, transparent 30%, rgba(10,10,10,0.8) 100%); }
+.glass-card { background-color: rgba(26,26,26,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(240,240,240,0.1); transition: all 0.3s; }
+.glass-card:hover { box-shadow: 0 0 15px -2px #c8c6c6; border-color: rgba(200,198,198,0.5); }
+.tag-chip { background-color: #1a1a1a; border: 1px solid #2e2e2e; padding: 4px 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #fff; }
+.no-underline { text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="w-full z-50 bg-surface-container/60 backdrop-blur-xl border-b border-outline-variant/20">
+    <div class="flex justify-between items-center px-8 py-4 max-w-[1200px] mx-auto">
+        <a href="/" class="text-secondary text-2xl font-bold no-underline" style="font-family: 'Playfair Display', serif;">Horror Facts</a>
+        <div class="flex gap-6">
+            <a href="/" class="text-primary font-bold border-b-2 border-primary pb-1 text-sm uppercase tracking-wider no-underline">Home</a>
+            <a href="/movies" class="text-on-surface-variant hover:text-primary text-sm font-bold uppercase tracking-wider no-underline">Archive</a>
+            <a href="/map" class="text-on-surface-variant hover:text-primary text-sm font-bold uppercase tracking-wider no-underline">Map</a>
+            {{if .Username}}
+            <span class="text-on-surface-variant text-sm">{{.Username}}</span>
+            <a href="/logout" class="text-on-surface-variant hover:text-primary text-sm font-bold uppercase tracking-wider no-underline">Exit</a>
+            {{else}}
+            <a href="/login" class="text-on-surface-variant hover:text-primary text-sm font-bold uppercase tracking-wider no-underline">Sign In</a>
+            {{end}}
+        </div>
+    </div>
+</nav>
+
+{{template "content" .}}
+
+<footer class="w-full py-6 bg-surface-container-lowest border-t border-outline-variant/10 z-10 text-center mt-auto">
+    <p class="text-xs text-on-surface-variant uppercase tracking-wider">EVERY SCREAM HAS A SOURCE.</p>
+</footer>
+</body>
+</html>

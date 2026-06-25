@@ -1,8 +1,8 @@
 # Horror Facts — Every Scream Has a Source
 
-[![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat&logo=postgresql)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-✓-2496ED?style=flat&logo=docker)](https://www.docker.com/)
+[Go]
+[PostgreSQL]
+[Docker]
 
 A dark atmospheric web application that reveals the **true stories behind famous horror films**. Built with Go, PostgreSQL, and pure HTML/CSS templates.
 

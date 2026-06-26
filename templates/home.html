@@ -1,11 +1,16 @@
 {{define "content"}}
+<div id="loadingScreen" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; flex-direction:column; align-items:center; justify-content:center; gap:24px;">
+    <img src="https://i.gifer.com/7VE.gif" alt="Loading..." style="width:200px; height:200px;"/>
+    <p style="color:#c8c6c6; font-size:18px; font-weight:bold; text-transform:uppercase; letter-spacing:3px; font-family:'JetBrains Mono',monospace; animation:pulse 1.5s infinite;">Summoning the truth...</p>
+</div>
+
 <main class="flex-grow z-10 flex flex-col items-center">
     <section class="w-full min-h-[90vh] flex flex-col justify-center items-center px-4 relative pt-[100px]">
         <div class="relative z-10 w-full max-w-[1200px] flex flex-col items-center text-center">
             <h1 class="text-5xl md:text-6xl font-black text-primary mb-8 max-w-4xl tracking-tighter" style="font-family: 'Playfair Display', serif;">
                 Reality is More Terrifying Than Fiction
             </h1>
-            <form method="GET" action="/search" class="w-full max-w-2xl relative group">
+            <form method="GET" action="/search" class="w-full max-w-2xl relative group" onsubmit="showLoading()">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 transform -translate-y-1/2 text-outline-variant">search</span>
                 <input type="text" name="q" class="w-full py-4 pl-12 pr-4 bg-transparent border-b-2 border-outline-variant text-on-surface text-lg text-center focus:outline-none focus:border-primary transition-colors" placeholder="Search for a film to uncover the truth..." required/>
             </form>
@@ -42,4 +47,10 @@
         </div>
     </section>
 </main>
+
+<script>
+function showLoading() {
+    document.getElementById('loadingScreen').style.display = 'flex';
+}
+</script>
 {{end}}

@@ -19,6 +19,22 @@ A dark atmospheric web application that reveals the **true stories behind famous
 
 ---
 
+## Screenshots
+
+### Главная страница/Homepage
+![Home Page](/static/screenshots/hf_home.png)
+
+### Страница с архивом фильмов/Archive
+![Movies Archive](/static/screenshots/hf_archive.png)
+
+### Фильтрация по категориям/Filter
+![Category Filter](/static/screenshots/hf_category.png)
+
+### Интерактивная карта/Map
+![Horror Map](/static/screenshots/hf_map.png)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
